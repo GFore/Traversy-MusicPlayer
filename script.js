@@ -22,7 +22,6 @@ function playSong() {
   musicContainer.classList.add('play');
   playBtn.querySelector('i.fas').classList.remove('fa-play');
   playBtn.querySelector('i.fas').classList.add('fa-pause');
-
   audio.play();
 };
 
@@ -30,28 +29,19 @@ function pauseSong() {
   musicContainer.classList.remove('play');
   playBtn.querySelector('i.fas').classList.add('fa-play');
   playBtn.querySelector('i.fas').classList.remove('fa-pause');
-
   audio.pause();
 };
 
 function prevSong() {
   songIndex--;
-
-  if (songIndex < 0) {
-    songIndex = songs.length - 1;
-  }
-
+  if (songIndex < 0) songIndex = songs.length - 1;
   loadSong(songs[songIndex]);
   playSong();
 };
 
 function nextSong() {
   songIndex++;
-
-  if (songIndex > songs.length - 1) {
-    songIndex = 0;
-  }
-
+  if (songIndex > songs.length - 1) songIndex = 0;
   loadSong(songs[songIndex]);
   playSong();
 };
@@ -66,7 +56,6 @@ function setProgress(e) {
   const width = this.clientWidth;
   const clickX = e.offsetX;
   const duration = audio.duration;
-
   audio.currentTime = (clickX / width) * duration;
 };
 
